@@ -26,16 +26,6 @@ class _HomeState extends State<Home> {
     'Hello?'
   ];
 
-  void _signOut() async {
-    try {
-      await widget.auth.signOut();
-      widget.onSignedOut();
-    }
-    catch (error) {
-      print(error);
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     // Scaffold gives a base design and structure for our UI
@@ -50,7 +40,7 @@ class _HomeState extends State<Home> {
             onTap: () {
               Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Setting(signOut: _signOut,)));
+                  MaterialPageRoute(builder: (context) => Setting(signOut: widget.onSignedOut,)));
             },
             child: Icon(Icons.settings),
           ),
